@@ -9,5 +9,6 @@ public class PasswordGeneratorEncoder {
         System.out.println(passwordEncoder.encode("admin@admin"));
         System.out.println(passwordEncoder.encode("nducson@nducson"));
         System.out.println(passwordEncoder.encode("ntiendung@ntiendung"));
+        System.out.println(passwordEncoder.encode("nhahang@nhahang"));
     }
 }

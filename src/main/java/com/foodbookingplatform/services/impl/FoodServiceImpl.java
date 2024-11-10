@@ -38,7 +38,7 @@ public class FoodServiceImpl implements FoodService {
         Food savedFood = foodRepository.save(food);
         return mapper.map(savedFood, FoodResponse.class);
     }
-
+    
     @Override
     public FoodResponse getFood(Long id) {
         Food food = foodRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Food", "id", id));
