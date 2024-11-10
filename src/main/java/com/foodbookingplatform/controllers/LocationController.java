@@ -113,7 +113,7 @@ public class LocationController {
 
     @ApiResponse(responseCode = "200", description = "Http Status 200 OK")
     @SecurityRequirement(name = "Bear Authentication")
-    @PreAuthorize("hasRole('SYSTEM_ADMIN')")
+    @PreAuthorize("hasAnyRole('SYSTEM_ADMIN', 'LOCATION_ADMIN')")
     @PutMapping
     public ResponseEntity<LocationResponse> updateLocation(@Valid @RequestBody LocationRequest request) {
         return ResponseEntity.ok(locationService.updateLocation(request));

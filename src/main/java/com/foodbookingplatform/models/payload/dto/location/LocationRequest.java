@@ -1,6 +1,7 @@
 package com.foodbookingplatform.models.payload.dto.location;
 
 import com.foodbookingplatform.models.constants.AppConstants;
+import com.foodbookingplatform.models.enums.EntityStatus;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,6 +47,8 @@ public class LocationRequest {
     @NotBlank(message = "Location's image cannot be blank")
     @Size(min = 2, message = "Location's image must have at least 2 characters")
     private String image;
+
+    private EntityStatus status;
 
     @NotNull(message = "UserId cannot be null")
     private Long userId;

@@ -190,11 +190,6 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private User setUpUser(SignupDto signupDto) {
-        // add check if username already exists
-        if (userRepository.existsByUserName(signupDto.getUsername())) {
-            throw new RestaurantBookingException(HttpStatus.BAD_REQUEST, "Username is already exist!");
-        }
-
         // add check if email already exists
         if (userRepository.existsByEmail(signupDto.getEmail())) {
             throw new RestaurantBookingException(HttpStatus.BAD_REQUEST, "Email is already exist!");
