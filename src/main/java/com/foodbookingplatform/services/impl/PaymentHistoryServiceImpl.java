@@ -260,7 +260,7 @@ public class PaymentHistoryServiceImpl extends BaseServiceImpl<PaymentHistory, P
         int month = currentDate.getMonthValue();
         int year = currentDate.getYear();
 
-        List<MonthlyCommissionPayment> unPaidCommission = commissionPaymentRepository.findAllByIsPaidFalseAndMonthAndYear( month, year);
+        List<MonthlyCommissionPayment> unPaidCommission = commissionPaymentRepository.findAllByIsPaidFalseAndMonthAndYear(month, year);
 
         unPaidCommission.forEach(c -> {
             Optional<User> user = userRepository.findById(c.getUserId());
@@ -307,8 +307,9 @@ public class PaymentHistoryServiceImpl extends BaseServiceImpl<PaymentHistory, P
             log.info("Updated commission payment for userId: {}, month: {}, year: {}, amount: {}",
                     user.getId(), month, year, roundedAmount);
         } else {
-            int presentMonth = DateTimeUtil.nowInVietnam().getMonthValue();
-            int presentYear = DateTimeUtil.nowInVietnam().getYear();
+            LocalDateTime now = DateTimeUtil.nowInVietnam().plusMonths(1);
+            int presentMonth = now.getMonthValue();
+            int presentYear = now.getYear();
             LocalDateTime expiredAt = LocalDateTime.of(presentYear, presentMonth,
                     Integer.parseInt(EXPIRED_PAYMENT_DAY), 23, 59, 59);
             MonthlyCommissionPayment newPayment = new MonthlyCommissionPayment();
