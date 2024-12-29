@@ -1,38 +1,25 @@
 package com.foodbookingplatform.services.impl;
 
-import com.foodbookingplatform.models.entities.LocationBooking;
-import com.foodbookingplatform.models.entities.MonthlyCommissionPayment;
 import com.foodbookingplatform.models.entities.Notification;
 import com.foodbookingplatform.models.entities.User;
 import com.foodbookingplatform.models.enums.EntityStatus;
-import com.foodbookingplatform.models.enums.LocationBookingStatus;
-import com.foodbookingplatform.models.enums.RoleType;
 import com.foodbookingplatform.models.exception.ResourceNotFoundException;
 import com.foodbookingplatform.models.payload.dto.notification.NotificationRequest;
 import com.foodbookingplatform.models.payload.dto.notification.NotificationResponse;
-import com.foodbookingplatform.repositories.LocationBookingRepository;
-import com.foodbookingplatform.repositories.MonthlyCommissionPaymentRepository;
 import com.foodbookingplatform.repositories.NotificationRepository;
 import com.foodbookingplatform.repositories.UserRepository;
-import com.foodbookingplatform.services.EmailService;
 import com.foodbookingplatform.services.NotificationService;
 import com.foodbookingplatform.utils.GenericSpecification;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -44,11 +31,11 @@ public class NotificationServiceImpl implements NotificationService {
     private final UserRepository userRepository;
     private final ModelMapper mapper;
 
-    @Value("${webhook-url}")
-    private String WEBHOOK_URL_PREFIX;
-
-    @Value("${fixed-amount}")
-    private String FIXED_RATE;
+//    @Value("${webhook-url}")
+//    private String WEBHOOK_URL_PREFIX;
+//
+//    @Value("${fixed-amount}")
+//    private String FIXED_RATE;
 
 
     @Override
